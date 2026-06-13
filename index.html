@@ -956,7 +956,7 @@ function toggleTheme(){
       var p = particles[i];
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(201,168,76,' + p.a + ')';
+      ctx.fillStyle = 'rgba(201,168,76,' + (p.a * 2.5) + ')';
       ctx.fill();
       
       p.x += p.vx;
