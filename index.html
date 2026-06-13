@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pharrell Tordjo — E-Commerce Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#faf8f5;
+    --card:#ffffff;
+    --text:#1a1a1a;
+    --muted:#8a8a8a;
+    --gold:#c9a84c;
+    --gold-light:#e8d5a3;
+    --gold-glow:rgba(201,168,76,0.12);
+    --line:#e8e5e0;
+    --shadow:0 4px 24px rgba(0,0,0,0.04);
+    --radius:16px;
+    --section-dark: #1a1a1a;
+  }
+  [data-theme="dark"]{
+    --bg:#0d0d0d;
+    --card:#1a1a1a;
+    --text:#f0ede8;
+    --muted:#8a8678;
+    --gold:#d4af37;
+    --gold-light:#f0d68a;
+    --gold-glow:rgba(212,175,55,0.15);
+    --line:#2a2a2a;
+    --shadow:0 4px 24px rgba(0,0,0,0.3);
+    --section-dark: #0d0d0d;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+    transition:background 0.4s,color 0.4s;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ═══ THEME TOGGLE ═══ */
+  .theme-toggle{
+    position:fixed;top:20px;right:20px;z-index:100;
+    width:44px;height:44px;border-radius:50%;
+    background:var(--card);border:1px solid var(--line);
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    font-size:18px;box-shadow:var(--shadow);
+    transition:all 0.3s;
+  }
+  .theme-toggle:hover{transform:scale(1.1)}
+
+  /* ═══ PARTICLES ═══ */
+  #particles{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    pointer-events:none;z-index:0;
+  }
+
+  /* ═══ HERO ═══ */
+  .hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;
+    justify-content:center;align-items:center;
+    text-align:center;padding:40px 24px;
+    background:linear-gradient(165deg, var(--bg) 0%, var(--card) 40%, rgba(201,168,76,0.05) 100%);
+    position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;
+    width:800px;height:800px;border-radius:50%;
+    background:radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+    top:-200px;right:-200px;
+    animation:ambientGlow 8s ease-in-out infinite alternate;
+  }
+  .hero::after{
+    content:'';position:absolute;
+    width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    bottom:-150px;left:-150px;
+    animation:ambientGlow 10s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes ambientGlow{
+    0%{transform:translate(0,0) scale(1)}
+    100%{transform:translate(40px,-30px) scale(1.1)}
+  }
+
+  .hero-content{position:relative;z-index:1;max-width:800px}
+
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:8px 20px;border-radius:100px;
+    background:var(--gold);color:#fff;
+    font-size:12px;font-weight:600;letter-spacing:0.15em;
+    text-transform:uppercase;margin-bottom:28px;
+    animation:fadeUp 0.8s 0.2s cubic-bezier(0.32,0.72,0,1) both;
+  }
+  .hero-badge .pulse{
+    width:6px;height:6px;border-radius:50%;
+    background:#fff;animation:pulseDot 2s ease-in-out infinite;
+  }
+  @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:0.3}}
+
+  .hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(48px,8vw,96px);
+    font-weight:600;letter-spacing:-0.03em;
+    line-height:1.05;margin-bottom:12px;
+    animation:fadeUp 0.8s 0.4s cubic-bezier(0.32,0.72,0,1) both;
+  }
+  .hero h1 .gold{color:var(--gold)}
+  .hero h1 .wave{display:inline-block;animation:wave 2s ease-in-out infinite}
+
+  @keyframes wave{0%,100%{transform:rotate(0deg)}50%{transform:rotate(12deg)}}
+
+  .hero-sub{
+    font-size:clamp(18px,2.5vw,24px);
+    font-weight:300;color:var(--muted);margin-bottom:8px;
+    min-height:40px;
+    animation:fadeUp 0.8s 0.6s cubic-bezier(0.32,0.72,0,1) both;
+  }
+  .hero-sub .cursor{display:inline-block;width:2px;height:1.2em;background:var(--gold);margin-left:2px;animation:blink 0.8s step-end infinite;vertical-align:text-bottom}
+  @keyframes blink{50%{opacity:0}}
+
+  .hero-tags{
+    display:flex;flex-wrap:wrap;justify-content:center;
+    gap:10px;margin-bottom:36px;
+    animation:fadeUp 0.8s 0.8s cubic-bezier(0.32,0.72,0,1) both;
+  }
+  .hero-tags span{
+    padding:6px 18px;border-radius:100px;
+    background:rgba(201,168,76,0.1);color:var(--gold);
+    font-size:13px;font-weight:500;
+    border:1px solid rgba(201,168,76,0.2);
+    transition:all 0.3s cubic-bezier(0.32,0.72,0,1);
+    cursor:default;
+  }
+  .hero-tags span:hover{background:var(--gold);color:#fff;transform:translateY(-3px)}
+
+  .hero-cta-row{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:14px;
+    animation:fadeUp 0.8s 1.0s cubic-bezier(0.32,0.72,0,1) both;
+  }
+  .hero-cta{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:16px 32px;border-radius:100px;
+    font-size:15px;font-weight:500;text-decoration:none;
+    transition:all 0.4s cubic-bezier(0.32,0.72,0,1);
+    cursor:pointer;border:none;
+  }
+  .hero-cta.primary{background:var(--section-dark);color:#fff}
+  .hero-cta.primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px -10px rgba(201,168,76,0.3)}
+  .hero-cta.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}
+  .hero-cta.secondary:hover{background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-3px)}
+  .hero-cta .arrow{
+    width:32px;height:32px;border-radius:50%;
+    background:rgba(255,255,255,0.12);
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;transition:transform 0.3s;
+  }
+  .hero-cta:hover .arrow{transform:translateX(4px) translateY(-2px)}
+
+  .scroll-indicator{
+    position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    opacity:0.4;
+    animation:fadeUp 0.8s 1.6s cubic-bezier(0.32,0.72,0,1) both;
+  }
+  .scroll-indicator span{font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted)}
+  .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom, var(--gold), transparent);animation:scrollPulse 2s ease-in-out infinite}
+  @keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.3)}}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+  /* ═══ SECTION ═══ */
+  .section{padding:100px 24px;max-width:1100px;margin:0 auto}
+  .section-header{text-align:center;margin-bottom:60px}
+  .section-label{
+    display:inline-block;padding:6px 16px;border-radius:100px;
+    background:rgba(201,168,76,0.1);color:var(--gold);
+    font-size:11px;font-weight:600;letter-spacing:0.15em;
+    text-transform:uppercase;margin-bottom:16px;
+  }
+  .section-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(32px,5vw,48px);font-weight:600;
+    letter-spacing:-0.02em;line-height:1.15;
+  }
+
+  /* ═══ ABOUT ═══ */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .about-text{font-size:16px;color:var(--muted);line-height:1.8}
+  .about-text strong{color:var(--text);font-weight:600}
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .stat-card{
+    background:var(--card);border-radius:var(--radius);
+    padding:28px 24px;text-align:center;
+    border:1px solid var(--line);position:relative;overflow:hidden;
+    transition:all 0.4s cubic-bezier(0.32,0.72,0,1);
+  }
+  .stat-card:hover{transform:translateY(-6px);box-shadow:0 25px 50px -20px rgba(201,168,76,0.15);border-color:var(--gold-light)}
+  .stat-card .stat-num{
+    font-family:'Playfair Display',serif;
+    font-size:36px;font-weight:600;color:var(--gold);margin-bottom:4px;
+  }
+  .stat-card .stat-label{font-size:13px;color:var(--muted);font-weight:500}
+
+  /* ═══ SKILLS ═══ */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px,1fr));gap:20px}
+  .skill-card{
+    background:var(--card);border-radius:var(--radius);
+    padding:32px 28px;border:1px solid var(--line);
+    transition:all 0.5s cubic-bezier(0.32,0.72,0,1);
+    position:relative;overflow:hidden;
+  }
+  .skill-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    transform:scaleX(0);transform-origin:left;
+    transition:transform 0.5s cubic-bezier(0.32,0.72,0,1);
+  }
+  .skill-card:hover::before{transform:scaleX(1)}
+  .skill-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px -25px rgba(201,168,76,0.2)}
+  .skill-icon{
+    width:48px;height:48px;border-radius:12px;
+    background:rgba(201,168,76,0.1);
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;margin-bottom:16px;
+  }
+  .skill-card h3{font-size:17px;font-weight:600;margin-bottom:8px}
+  .skill-card p{font-size:14px;color:var(--muted);line-height:1.6}
+
+  /* ═══ SKILL BAR ═══ */
+  .skill-bar-wrap{margin-top:14px}
+  .skill-bar-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+  .skill-bar-label span:last-child{color:var(--gold);font-weight:600}
+  .skill-bar-track{
+    width:100%;height:4px;border-radius:4px;
+    background:var(--line);overflow:hidden;
+  }
+  .skill-bar-fill{
+    height:100%;border-radius:4px;
+    background:linear-gradient(90deg, var(--gold), var(--gold-light));
+    width:0;
+    transition:width 1.2s cubic-bezier(0.32,0.72,0,1);
+  }
+  .skill-bar-fill.animated{width:var(--pct)}
+
+  /* ═══ TIMELINE ═══ */
+  .timeline{position:relative;padding-left:40px}
+  .timeline::before{
+    content:'';position:absolute;left:14px;top:0;bottom:0;
+    width:1px;background:var(--line);
+  }
+  .tl-item{position:relative;margin-bottom:40px;padding-left:20px}
+  .tl-item::before{
+    content:'';position:absolute;left:-26px;top:6px;
+    width:10px;height:10px;border-radius:50%;
+    background:var(--gold);border:2px solid var(--bg);
+  }
+  .tl-date{font-size:12px;color:var(--gold);font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:4px}
+  .tl-title{font-size:17px;font-weight:600;margin-bottom:2px}
+  .tl-org{font-size:14px;color:var(--muted);margin-bottom:8px}
+  .tl-desc{font-size:14px;color:var(--muted);line-height:1.7}
+
+  /* ═══ PROJECT SHOWCASE ═══ */
+  .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+  .project-card{
+    background:var(--card);border-radius:var(--radius);
+    padding:36px 28px;border:1px solid var(--line);
+    text-align:center;position:relative;
+    transition:all 0.5s cubic-bezier(0.32,0.72,0,1);
+    overflow:hidden;
+  }
+  .project-card::after{
+    content:'→';position:absolute;bottom:-20px;right:-10px;
+    font-size:60px;color:var(--gold);opacity:0.1;
+    transition:all 0.4s;
+  }
+  .project-card:hover::after{bottom:10px;right:16px;opacity:0.3}
+  .project-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px -25px rgba(201,168,76,0.2)}
+  .project-icon{font-size:40px;margin-bottom:16px}
+  .project-card h3{font-size:18px;font-weight:600;margin-bottom:8px}
+  .project-card p{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+  .project-tag{
+    display:inline-block;padding:4px 12px;border-radius:100px;
+    background:rgba(201,168,76,0.1);color:var(--gold);
+    font-size:11px;font-weight:500;margin:2px;
+  }
+
+  /* ═══ CERTIFICATES ═══ */
+  .certs-scroll{
+    display:flex;gap:16px;overflow-x:auto;
+    padding:16px 0 24px;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+  .certs-scroll::-webkit-scrollbar{height:4px}
+  .certs-scroll::-webkit-scrollbar-track{background:var(--line);border-radius:4px}
+  .certs-scroll::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+  .cert-card{
+    min-width:240px;padding:24px;border-radius:var(--radius);
+    background:var(--card);border:1px solid var(--line);
+    scroll-snap-align:start;
+    transition:all 0.3s;
+  }
+  .cert-card:hover{transform:translateY(-4px);border-color:var(--gold-light)}
+  .cert-badge{font-size:32px;margin-bottom:10px}
+  .cert-card h4{font-size:15px;font-weight:600;margin-bottom:4px}
+  .cert-card p{font-size:12px;color:var(--muted)}
+
+  /* ═══ CONTACT ═══ */
+  .contact-bar{
+    background:var(--section-dark);border-radius:24px;
+    padding:60px 40px;text-align:center;margin-top:40px;
+    transition:background 0.4s;
+  }
+  .contact-bar h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(28px,4vw,40px);color:#fff;
+    font-weight:500;margin-bottom:12px;
+  }
+  .contact-bar p{color:rgba(255,255,255,0.5);font-size:16px;margin-bottom:28px}
+  .contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+  .contact-links a{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:12px 28px;border-radius:100px;
+    background:rgba(255,255,255,0.08);color:#fff;
+    text-decoration:none;font-size:14px;font-weight:500;
+    transition:all 0.3s cubic-bezier(0.32,0.72,0,1);
+    border:1px solid rgba(255,255,255,0.06);
+  }
+  .contact-links a:hover{background:var(--gold);color:var(--text);transform:translateY(-3px)}
+
+  /* ═══ FOOTER ═══ */
+  .footer{text-align:center;padding:40px 24px;font-size:13px;color:var(--muted)}
+  .footer span{color:var(--gold)}
+
+  /* ═══ REVEAL ═══ */
+  .reveal{opacity:0;transform:translateY(50px);transition:all 0.9s cubic-bezier(0.32,0.72,0,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* ═══ QR CODE (CSS only) ═══ */
+  .qr-wrap{text-align:center;margin:40px auto}
+  .qr-wrap p{font-size:13px;color:var(--muted);margin-top:10px}
+
+  /* ═══ RESPONSIVE ═══ */
+  @media(max-width:768px){
+    .about-grid{grid-template-columns:1fr;gap:40px}
+    .about-stats{grid-template-columns:1fr 1fr}
+    .section{padding:60px 20px}
+    .contact-bar{padding:40px 24px;border-radius:16px}
+    .timeline{padding-left:30px}
+    .hero-cta-row{flex-direction:column;align-items:center}
+  }
+  @media(max-width:480px){
+    .about-stats{grid-template-columns:1fr}
+    .skills-grid,.project-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ THEME TOGGLE ═══ -->
+<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" title="Dark/Light mode">🌙</button>
+
+<!-- ═══ PARTICLES ═══ -->
+<canvas id="particles"></canvas>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      Beschikbaar september 2026 · Ma-Di-Wo
+    </div>
+    <h1>Pharrell <span class="gold">Tordjo</span><span class="wave">👋</span></h1>
+    <p class="hero-sub" id="typing"></p>
+    <div class="hero-tags">
+      <span>🤖 AI Tools</span>
+      <span>📊 Excel · Word · Outlook</span>
+      <span>📱 Social Media</span>
+      <span>🛒 Shopify</span>
+      <span>🎨 Content Creatie</span>
+    </div>
+    <div class="hero-cta-row">
+      <button class="hero-cta primary" onclick="document.getElementById('cv').scrollIntoView({behavior:'smooth'})">
+        Bekijk mijn CV
+        <span class="arrow">↓</span>
+      </button>
+      <a class="hero-cta secondary" href="mailto:Tordjop491@gmail.com">
+        ✉️ Mail mij
+      </a>
+      <a class="hero-cta secondary" href="https://wa.me/31648476943" target="_blank">
+        💬 WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ OVER MIJ ═══ -->
+<section class="section" id="cv">
+  <div class="section-header reveal">
+    <div class="section-label">Over Mij</div>
+    <h2 class="section-title">Tweedejaars E-Commerce<br>Specialist met passie voor AI</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p style="margin-bottom:16px">
+        Gemotiveerde <strong>E-Commerce Specialist (BOL)</strong> student, 2e jaar,
+        op zoek naar een stageplek vanaf <strong>september 2026</strong>
+        (beschikbaar op <strong>maandag, dinsdag en woensdag</strong>).
+      </p>
+      <p style="margin-bottom:16px">
+        Specialisatie in <strong>AI-tools</strong> (ChatGPT, prompt engineering),
+        <strong>Microsoft Office</strong> (Excel, Word, Outlook) en
+        <strong>social media management</strong>.
+      </p>
+      <p>
+        Ik ben leergierig, nauwkeurig en klaar om mijn kennis bij uw bedrijf
+        in de praktijk te brengen!
+      </p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="stat-card"><div class="stat-num" data-count="2">0</div><div class="stat-label">Jaar E-Commerce</div></div>
+      <div class="stat-card"><div class="stat-num" data-count="3">0</div><div class="stat-label">Dagen/week beschikbaar</div></div>
+      <div class="stat-card"><div class="stat-num">AI</div><div class="stat-label">ChatGPT & Tools</div></div>
+      <div class="stat-card"><div class="stat-num">Office</div><div class="stat-label">Excel · Word · Outlook</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-label">Vaardigheden</div>
+    <h2 class="section-title">Wat ik breng</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">🤖</div>
+      <h3>AI & Automatisering</h3>
+      <p>ChatGPT, prompt engineering, AI content tools voor efficiënte content creatie.</p>
+      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Expertise</span><span>85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:85%"></div></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📊</div>
+      <h3>Microsoft Office</h3>
+      <p>Excel (formules, draaitabellen), Word, Outlook, PowerPoint.</p>
+      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Expertise</span><span>90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:90%"></div></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📱</div>
+      <h3>Social Media</h3>
+      <p>Content planning en management voor Instagram, TikTok, LinkedIn.</p>
+      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Expertise</span><span>80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:80%"></div></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🛒</div>
+      <h3>E-Commerce</h3>
+      <p>Shopify, WooCommerce, webshop beheer, online marketing.</p>
+      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Expertise</span><span>75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:75%"></div></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🎨</div>
+      <h3>Content Creatie</h3>
+      <p>Canva, copywriting, beeldbewerking voor socials en webshops.</p>
+      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Expertise</span><span>75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:75%"></div></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🌐</div>
+      <h3>Talen</h3>
+      <p>Nederlands (moedertaal), Engels (goed B2).</p>
+      <div class="skill-bar-wrap"><div class="skill-bar-label"><span>Nederlands</span><span>100%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:100%"></div></div></div>
+      <div class="skill-bar-wrap" style="margin-top:8px"><div class="skill-bar-label"><span>Engels</span><span>75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:75%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTEN ═══ -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-label">Projecten</div>
+    <h2 class="section-title">Wat ik heb gemaakt</h2>
+  </div>
+  <div class="project-grid">
+    <div class="project-card reveal">
+      <div class="project-icon">🛍️</div>
+      <h3>Eigen Webshop</h3>
+      <p>Ontwikkeling van een eigen webshop waar ik productbeheer, marketing en klantcontact heb uitgevoerd.</p>
+      <span class="project-tag">Shopify</span>
+      <span class="project-tag">Marketing</span>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-icon">🤖</div>
+      <h3>AI Content Pipeline</h3>
+      <p>Inzet van ChatGPT voor geautomatiseerde content creatie, productbeschrijvingen en social media posts.</p>
+      <span class="project-tag">AI</span>
+      <span class="project-tag">Content</span>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-icon">📊</div>
+      <h3>Data Analyse</h3>
+      <p>Verwerken van verkoopdata in Excel met draaitabellen, grafieken en trendanalyse.</p>
+      <span class="project-tag">Excel</span>
+      <span class="project-tag">Data</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CERTIFICATEN ═══ -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-label">Certificaten</div>
+    <h2 class="section-title">Mijn ontwikkelingen</h2>
+  </div>
+  <div class="certs-scroll reveal">
+    <div class="cert-card"><div class="cert-badge">🎓</div><h4>E-Commerce Specialist</h4><p>ROC van Amsterdam · MBO 4</p></div>
+    <div class="cert-card"><div class="cert-badge">🤖</div><h4>AI Prompt Engineering</h4><p>ChatGPT · Zelfstudie</p></div>
+    <div class="cert-card"><div class="cert-badge">📊</div><h4>Excel Expert</h4><p>Formules · Draaitabellen · Analyse</p></div>
+    <div class="cert-card"><div class="cert-badge">📱</div><h4>Social Media Marketing</h4><p>Content · Groei · Analytics</p></div>
+    <div class="cert-card"><div class="cert-badge">🛒</div><h4>Shopify Basics</h4><p>Webshop beheer · Producten · Marketing</p></div>
+    <div class="cert-card"><div class="cert-badge">💬</div><h4>Engels B2</h4><p>Professioneel zakelijk Engels</p></div>
+  </div>
+</section>
+
+<!-- ═══ OPLEIDING ═══ -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-label">Opleiding</div>
+    <h2 class="section-title">Mijn leertraject</h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-date">2023 — Heden</div>
+      <div class="tl-title">E-Commerce Specialist (BOL)</div>
+      <div class="tl-org">ROC van Amsterdam · MBO 4, 3e jaar</div>
+      <div class="tl-desc">Specialisatie in online marketing, webshop beheer, SEO/SEA, social media en data-analyse.</div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-date">Sep 2026</div>
+      <div class="tl-title">Stage E-Commerce</div>
+      <div class="tl-org">Beschikbaar · Maandag t/m woensdag</div>
+      <div class="tl-desc">Op zoek naar een innovatief bedrijf waar ik mijn AI-, Office- en social media skills kan inzetten.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QR DOWNLOAD ═══ -->
+<div class="section" style="padding-top:0">
+  <div class="qr-wrap reveal">
+    <div style="display:inline-block;background:var(--card);padding:20px;border-radius:16px;border:1px solid var(--line)">
+      <div id="qrcode" style="width:150px;height:150px;margin:0 auto;background:var(--card);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:60px;color:var(--text)">📱</div>
+      <p style="margin-top:8px">Scan voor portfolio</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="section">
+  <div class="contact-bar reveal">
+    <h2>Zullen we kennismaken?</h2>
+    <p>Ik ben op zoek naar een stageplek waar ik kan groeien en bijdragen</p>
+    <div class="contact-links">
+      <a href="mailto:Tordjop491@gmail.com"><span>✉️</span> Tordjop491@gmail.com</a>
+      <a href="https://wa.me/31648476943" target="_blank"><span>💬</span> WhatsApp</a>
+      <a href="#" onclick="window.print();return false"><span>📄</span> Download PDF</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  Gemaakt met <span>❤</span> door Pharrell Tordjo · E-Commerce Specialist
+</footer>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+// ── Theme Toggle ──
+function toggleTheme(){
+  var html = document.documentElement;
+  var btn = document.getElementById('themeBtn');
+  if(html.getAttribute('data-theme') === 'dark'){
+    html.removeAttribute('data-theme');
+    btn.textContent = '🌙';
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    btn.textContent = '☀️';
+  }
+}
+
+// ── Typing Effect ──
+(function(){
+  var el = document.getElementById('typing');
+  var words = ['E-Commerce Specialist', 'AI & Office Expert', 'Social Media Creator', '3e jaars BOL student'];
+  var wi = 0, ci = 0, isDeleting = false;
+  function type(){
+    var word = words[wi];
+    if(!isDeleting && ci <= word.length){
+      el.innerHTML = word.substring(0, ci) + '<span class="cursor"></span>';
+      ci++;
+      setTimeout(type, 80);
+    } else if(!isDeleting && ci > word.length){
+      isDeleting = true;
+      setTimeout(type, 1500);
+    } else if(isDeleting && ci >= 0){
+      el.innerHTML = word.substring(0, ci) + '<span class="cursor"></span>';
+      ci--;
+      setTimeout(type, 30);
+    } else {
+      isDeleting = false;
+      wi = (wi + 1) % words.length;
+      ci = 0;
+      setTimeout(type, 500);
+    }
+  }
+  if(el) type();
+})();
+
+// ── Scroll Reveal ──
+(function(){
+  var reveals = document.querySelectorAll('.reveal');
+  if(!reveals.length) return;
+  function check(){
+    var vh = window.innerHeight;
+    for(var r=0; r<reveals.length; r++){
+      var rect = reveals[r].getBoundingClientRect();
+      if(rect.top < vh - 60 && !reveals[r].classList.contains('visible')){
+        reveals[r].classList.add('visible');
+        // Trigger skill bar animation
+        var fills = reveals[r].querySelectorAll('.skill-bar-fill');
+        for(var f=0; f<fills.length; f++){ fills[f].classList.add('animated'); }
+      }
+    }
+  }
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      for(var e=0; e<entries.length; e++){
+        if(entries[e].isIntersecting){
+          entries[e].target.classList.add('visible');
+          var fills = entries[e].target.querySelectorAll('.skill-bar-fill');
+          for(var f=0; f<fills.length; f++){ fills[f].classList.add('animated'); }
+          obs.unobserve(entries[e].target);
+        }
+      }
+    }, {rootMargin:'0px 0px 100px 0px'});
+    for(var r=0; r<reveals.length; r++) obs.observe(reveals[r]);
+  }
+  var timer;
+  window.addEventListener('scroll', function(){
+    cancelAnimationFrame(timer);
+    timer = requestAnimationFrame(check);
+  }, {passive:true});
+  check();
+})();
+
+// ── Particles ──
+(function(){
+  var canvas = document.getElementById('particles');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var count = 50;
+  
+  function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  
+  for(var i=0; i<count; i++){
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      r: Math.random() * 2 + 1,
+      a: Math.random() * 0.3 + 0.1
+    });
+  }
+  
+  function draw(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for(var i=0; i<particles.length; i++){
+      var p = particles[i];
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(201,168,76,' + p.a + ')';
+      ctx.fill();
+      
+      p.x += p.vx;
+      p.y += p.vy;
+      if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ── Counter Animation ──
+(function(){
+  var counters = document.querySelectorAll('[data-count]');
+  if(!counters.length) return;
+  function animateCounter(el){
+    var target = parseInt(el.getAttribute('data-count'));
+    var current = 0;
+    var step = Math.ceil(target / 30);
+    var timer = setInterval(function(){
+      current += step;
+      if(current >= target){
+        el.textContent = target;
+        clearInterval(timer);
+      } else {
+        el.textContent = current;
+      }
+    }, 40);
+  }
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      for(var e=0; e<entries.length; e++){
+        if(entries[e].isIntersecting){
+          var els = entries[e].target.querySelectorAll('[data-count]');
+          for(var i=0; i<els.length; i++) animateCounter(els[i]);
+          obs.unobserve(entries[e].target);
+        }
+      }
+    });
+    var statCards = document.querySelectorAll('.stat-card');
+    for(var i=0; i<statCards.length; i++) obs.observe(statCards[i]);
+  }
+})();
+</script>
+
+</body>
+</html>
