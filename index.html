@@ -417,6 +417,19 @@
   .slide-dot.active{background:var(--gold);width:26px;border-radius:5px}
   @media print{.slides-nav{display:none}.slide-card{min-width:100%!important;page-break-inside:avoid}}
 
+  /* ═══ COMPANY LINE ═══ */
+  .company-line-wrap{overflow-x:auto;padding:10px 0 20px;-webkit-overflow-scrolling:touch}
+  .company-line-wrap::-webkit-scrollbar{height:4px}
+  .company-line-wrap::-webkit-scrollbar-track{background:var(--line);border-radius:4px}
+  .company-line-wrap::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+  .company-line{display:flex;gap:24px;padding:8px 4px;min-width:max-content}
+  .company-logo{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:100px;padding:16px 12px;background:var(--card);border-radius:var(--radius);border:1px solid var(--line);transition:all 0.3s cubic-bezier(0.32,0.72,0,1)}
+  .company-logo:hover{transform:translateY(-6px);border-color:var(--gold-light);box-shadow:0 16px 40px -16px rgba(201,168,76,0.2)}
+  .logo-circle{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;flex-shrink:0}
+  .cname{font-size:12px;font-weight:600;text-align:center;color:var(--text);white-space:nowrap}
+  .crole{font-size:10px;color:var(--muted);text-align:center;white-space:nowrap}
+  @media print{.company-line-wrap{overflow:visible}.company-logo{break-inside:avoid}}
+
   /* ═══ RESPONSIVE ═══ */
   @media(max-width:768px){
     .about-grid{grid-template-columns:1fr;gap:40px}
@@ -555,33 +568,44 @@
   </div>
 </section>
 
-<!-- ═══ PROJECTEN ═══ -->
-<section class="section">
-  <div class="section-header reveal">
-    <div class="section-label">Projecten</div>
-    <h2 class="section-title">Wat ik heb gemaakt</h2>
+<!-- ═══ BEDRIJVEN LINE ═══ -->
+<section class="section" style="padding:40px 24px">
+  <div class="section-header reveal" style="margin-bottom:30px">
+    <div class="section-label">Ervaring</div>
+    <h2 class="section-title" style="font-size:28px">Bedrijven waar ik aan heb gewerkt</h2>
   </div>
-  <div class="project-grid">
-    <div class="project-card reveal">
-      <div class="project-icon">🛍️</div>
-      <h3>Eigen Webshop</h3>
-      <p>Ontwikkeling van een eigen webshop waar ik productbeheer, marketing en klantcontact heb uitgevoerd.</p>
-      <span class="project-tag">Shopify</span>
-      <span class="project-tag">Marketing</span>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-icon">🤖</div>
-      <h3>AI Content Pipeline</h3>
-      <p>Inzet van ChatGPT voor geautomatiseerde content creatie, productbeschrijvingen en social media posts.</p>
-      <span class="project-tag">AI</span>
-      <span class="project-tag">Content</span>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-icon">📊</div>
-      <h3>Data Analyse</h3>
-      <p>Verwerken van verkoopdata in Excel met draaitabellen, grafieken en trendanalyse.</p>
-      <span class="project-tag">Excel</span>
-      <span class="project-tag">Data</span>
+  <div class="company-line-wrap reveal">
+    <div class="company-line" id="companyLine">
+      <div class="company-logo">
+        <div class="logo-circle" style="background:#e74c3c">🍔</div>
+        <span class="cname">Johnny's Burger</span>
+        <span class="crole">Marketing & Onderzoek</span>
+      </div>
+      <div class="company-logo">
+        <div class="logo-circle" style="background:#f39c12">🌮</div>
+        <span class="cname">O'Tacos</span>
+        <span class="crole">Branding & Analyse</span>
+      </div>
+      <div class="company-logo">
+        <div class="logo-circle" style="background:#e67e22">🧀</div>
+        <span class="cname">Chick & Cheeze</span>
+        <span class="crole">Trend & Strategie</span>
+      </div>
+      <div class="company-logo">
+        <div class="logo-circle" style="background:#9b59b6">📱</div>
+        <span class="cname">Influencer Marketing</span>
+        <span class="crole">30+ TikTok creators</span>
+      </div>
+      <div class="company-logo">
+        <div class="logo-circle" style="background:#3498db">📍</div>
+        <span class="cname">Koningsdag</span>
+        <span class="crole">Locatie & Marktonderzoek</span>
+      </div>
+      <div class="company-logo">
+        <div class="logo-circle" style="background:#2ecc71">💡</div>
+        <span class="cname">Mini Smash Concept</span>
+        <span class="crole">Nieuwe Food Concepten</span>
+      </div>
     </div>
   </div>
 </section>
