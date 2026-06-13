@@ -395,27 +395,25 @@
     @page{margin:8mm}
   }
 
-  /* ═══ TABS ═══ */
-  .tabs-wrap{max-width:900px;margin:0 auto}
-  .tabs-nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;justify-content:center}
-  .tab-btn{padding:10px 22px;border-radius:100px;background:var(--card);border:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:500;cursor:pointer;transition:all 0.3s cubic-bezier(0.32,0.72,0,1);font-family:'Plus Jakarta Sans',sans-serif}
-  .tab-btn:hover{border-color:var(--gold-light);color:var(--text)}
-  .tab-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
-  .tab-panel{display:none;animation:fadeIn 0.4s cubic-bezier(0.32,0.72,0,1)}
-  .tab-panel.active{display:block}
-  .tab-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-  .tab-banner{width:100%;height:220px;overflow:hidden;background:var(--bg);position:relative;display:flex;align-items:center;justify-content:center}
-  .tab-banner img{width:100%;height:100%;object-fit:cover}
-  .tab-banner .logo-overlay{position:absolute;bottom:16px;right:16px;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);padding:8px 18px;border-radius:100px;color:#fff;font-size:13px;font-weight:600;letter-spacing:0.05em}
-  .tab-body{padding:28px 32px}
-  .tab-body h3{font-size:20px;font-weight:600;margin-bottom:4px}
-  .tab-meta{font-size:13px;color:var(--gold);font-weight:500;margin-bottom:16px}
-  .tab-list{list-style:none;padding:0;margin:0 0 16px}
-  .tab-list li{padding:7px 0 7px 22px;position:relative;font-size:14px;color:var(--muted);line-height:1.6}
-  .tab-list li::before{content:"▸";position:absolute;left:0;color:var(--gold)}
-  .tab-tags{display:flex;gap:6px;flex-wrap:wrap}
-  .tab-tags span{padding:4px 14px;border-radius:100px;background:rgba(201,168,76,0.1);color:var(--gold);font-size:11px;font-weight:500}
-  @media print{.tabs-nav{display:none}.tab-panel{display:block!important}}
+  /* ═══ SLIDESHOW ═══ */
+  .slideshow-wrap{overflow:hidden;position:relative;border-radius:var(--radius);max-width:900px;margin:0 auto}
+  .slides-track{display:flex;transition:transform 0.5s cubic-bezier(0.32,0.72,0,1);gap:0}
+  .slide-card{min-width:100%;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .slide-img{width:100%;height:200px;overflow:hidden;background:var(--bg);position:relative}
+  .slide-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .slide-logo{position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);padding:6px 16px;border-radius:100px;color:#fff;font-size:13px;font-weight:600;letter-spacing:0.03em}
+  .slide-body{padding:24px 28px}
+  .slide-body h3{font-size:19px;font-weight:600;margin-bottom:4px}
+  .slide-meta{font-size:12px;color:var(--gold);font-weight:500;margin-bottom:14px}
+  .slide-list{list-style:none;padding:0;margin:0 0 14px}
+  .slide-list li{padding:6px 0 6px 20px;position:relative;font-size:13px;color:var(--muted);line-height:1.6}
+  .slide-list li::before{content:"▸";position:absolute;left:0;color:var(--gold)}
+  .slide-tags{display:flex;gap:6px;flex-wrap:wrap}
+  .slide-tags span{padding:3px 12px;border-radius:100px;background:rgba(201,168,76,0.1);color:var(--gold);font-size:10px;font-weight:500}
+  .slides-nav{display:flex;justify-content:center;gap:8px;margin-top:16px}
+  .slide-dot{width:10px;height:10px;border-radius:50%;background:var(--line);cursor:pointer;transition:all 0.3s;border:none;padding:0}
+  .slide-dot.active{background:var(--gold);width:26px;border-radius:5px}
+  @media print{.slides-nav{display:none}.slide-card{min-width:100%!important;page-break-inside:avoid}}
 
   /* ═══ RESPONSIVE ═══ */
   @media(max-width:768px){
@@ -592,116 +590,107 @@
     <div class="section-label">Bewijzen</div>
     <h2 class="section-title">Mijn analyse & onderzoek</h2>
   </div>
-  <div class="tabs-wrap reveal">
-    <div class="tabs-nav">
-      <button class="tab-btn active" data-tab="0">🍔 Johnny's</button>
-      <button class="tab-btn" data-tab="1">🌮 O'Tacos</button>
-      <button class="tab-btn" data-tab="2">🧀 Chick & Cheeze</button>
-      <button class="tab-btn" data-tab="3">📱 Influencers</button>
-      <button class="tab-btn" data-tab="4">📍 Locaties</button>
-      <button class="tab-btn" data-tab="5">💡 Concepten</button>
-    </div>
+  <div class="slideshow-wrap reveal">
+    <div class="slides-track" id="slideTrack">
 
-    <div class="tab-panel active" data-tab="0">
-      <div class="tab-card">
-        <div class="tab-banner"><img src="bewijzen/OPdracht Website Insight Stage OPDRACHT 10-15-2025_image1.png" alt="Johnny's Burger"><div class="logo-overlay">🍔 Johnny's Burger</div></div>
-        <div class="tab-body">
-          <h3>Website Analyse & Doelgroep Onderzoek</h3>
-          <p class="tab-meta">UX, doelgroep & marketing</p>
-          <ul class="tab-list">
+      <div class="slide-card">
+        <div class="slide-img"><img src="bewijzen/OPdracht Website Insight Stage OPDRACHT 10-15-2025_image1.png" alt="Johnny's Burger"><div class="slide-logo">🍔 Johnny's Burger</div></div>
+        <div class="slide-body">
+          <h3>Website Analyse & Doelgroep</h3>
+          <p class="slide-meta">UX, doelgroep & marketing</p>
+          <ul class="slide-list">
             <li>Website makkelijk te navigeren, meal deals overzichtelijk</li>
-            <li>Coupon code onduidelijk — advies: klikbare button met automatische kortingscode</li>
+            <li>Coupon code onduidelijk — advies: klikbare button met automatische code</li>
             <li>Doelgroep: jongeren (18-30), via Instagram straatinterviews & skits</li>
-            <li>Imago: speels, jong, streetstyle — consistent met social media</li>
+            <li>Imago: speels, jong, streetstyle</li>
           </ul>
-          <div class="tab-tags"><span>UX</span><span>Doelgroep</span><span>Website</span></div>
+          <div class="slide-tags"><span>UX</span><span>Doelgroep</span><span>Website</span></div>
         </div>
       </div>
-    </div>
 
-    <div class="tab-panel" data-tab="1">
-      <div class="tab-card">
-        <div class="tab-banner"><img src="bewijzen/OPdracht Website Insight Stage OPDRACHT 10-15-2025_image2.png" alt="O'Tacos"><div class="logo-overlay">🌮 O'Tacos</div></div>
-        <div class="tab-body">
-          <h3>Internationale Branding & Vertaling Check</h3>
-          <p class="tab-meta">Website, vertaling & doelgroep</p>
-          <ul class="tab-list">
-            <li>Clean en overduidelijke website, maar vertaalfouten NL/FR op .com</li>
-            <li>Franse tekst bij eerste bezoek kan bezoekers afschrikken</li>
-            <li>Doelgroep: zelfde als Johnny's, versterkt door rapper Boef op Instagram</li>
-            <li>Advies: ander font voor prijzen dat kleurenthema matcht (bijv. geel)</li>
+      <div class="slide-card">
+        <div class="slide-img"><img src="bewijzen/OPdracht Website Insight Stage OPDRACHT 10-15-2025_image2.png" alt="O'Tacos"><div class="slide-logo">🌮 O'Tacos</div></div>
+        <div class="slide-body">
+          <h3>Branding & Internationale Check</h3>
+          <p class="slide-meta">Website, vertaling & doelgroep</p>
+          <ul class="slide-list">
+            <li>Clean website, maar vertaalfouten NL/FR op .com</li>
+            <li>Franse tekst schrikt Nederlandse bezoekers af</li>
+            <li>Doelgroep versterkt door rapper Boef op Instagram</li>
+            <li>Advies: font in prijzen dat kleurenthema matcht</li>
           </ul>
-          <div class="tab-tags"><span>Branding</span><span>UX</span><span>Vertaling</span></div>
+          <div class="slide-tags"><span>Branding</span><span>UX</span><span>Vertaling</span></div>
         </div>
       </div>
-    </div>
 
-    <div class="tab-panel" data-tab="2">
-      <div class="tab-card">
-        <div class="tab-banner"><img src="bewijzen/Lijstje 9-24-2025 stage_image7.jpeg" alt="Chick & Cheeze"><div class="logo-overlay">🧀 Chick & Cheeze</div></div>
-        <div class="tab-body">
-          <h3>Trend Analyse & Social Media Strategie</h3>
-          <p class="tab-meta">Menu, trends & doelgroep</p>
-          <ul class="tab-list">
-            <li>Menu gebaseerd op trending food items en meal combinaties</li>
-            <li>Doelgroep: mensen die online bestellen, beïnvloed door social media trends</li>
-            <li>Gebruikt virale momenten om aandacht te trekken en conversie te verhogen</li>
-            <li>Strategie: inspelen op chocolade/trendy items voor impulsbestellingen</li>
+      <div class="slide-card">
+        <div class="slide-img"><img src="bewijzen/Lijstje 9-24-2025 stage_image7.jpeg" alt="Chick & Cheeze"><div class="slide-logo">🧀 Chick & Cheeze</div></div>
+        <div class="slide-body">
+          <h3>Trends & Social Media Strategie</h3>
+          <p class="slide-meta">Menu, trends & doelgroep</p>
+          <ul class="slide-list">
+            <li>Menu gebaseerd op trending food & meal combos</li>
+            <li>Doelgroep: online bestellers, beïnvloed door social media</li>
+            <li>Virale momenten gebruiken voor conversie</li>
+            <li>Strategie: inspelen op impulsbestellingen via trends</li>
           </ul>
-          <div class="tab-tags"><span>Trends</span><span>Social Media</span><span>Strategie</span></div>
+          <div class="slide-tags"><span>Trends</span><span>Social Media</span><span>Strategie</span></div>
         </div>
       </div>
-    </div>
 
-    <div class="tab-panel" data-tab="3">
-      <div class="tab-card">
-        <div class="tab-banner"><img src="bewijzen/Lijstje 9-24-2025 stage_image6.jpeg" alt="Influencers"><div class="logo-overlay">📱 Influencer Marketing</div></div>
-        <div class="tab-body">
-          <h3>TikTok Samenwerkingen & Nieuwe Gezichten</h3>
-          <p class="tab-meta">30+ influencers (100-200K volgers)</p>
-          <ul class="tab-list">
-            <li>Mix van humor, food, en lifestyle content creators</li>
-            <li>Doelgroep: jongeren via TikTok en Instagram</li>
-            <li>Voorbeelden: Samya Hafsaoui, Drive & Bites, Don Kaaklijn, Mo7ayati</li>
-            <li>Nieuwe gezichten voor frisse uitstraling van de merken</li>
+      <div class="slide-card">
+        <div class="slide-img"><img src="bewijzen/Lijstje 9-24-2025 stage_image6.jpeg" alt="Influencers"><div class="slide-logo">📱 Influencer Marketing</div></div>
+        <div class="slide-body">
+          <h3>TikTok Samenwerkingen</h3>
+          <p class="slide-meta">30+ influencers (100-200K volgers)</p>
+          <ul class="slide-list">
+            <li>Mix humor, food & lifestyle creators</li>
+            <li>Doelgroep: jongeren via TikTok & Instagram</li>
+            <li>Voorbeelden: Samya Hafsaoui, Drive & Bites, Don Kaaklijn</li>
+            <li>Nieuwe gezichten voor frisse uitstraling</li>
           </ul>
-          <div class="tab-tags"><span>Influencer</span><span>TikTok</span><span>Marketing</span></div>
+          <div class="slide-tags"><span>Influencer</span><span>TikTok</span><span>Marketing</span></div>
         </div>
       </div>
-    </div>
 
-    <div class="tab-panel" data-tab="4">
-      <div class="tab-card">
-        <div class="tab-banner"><img src="bewijzen/OPdracht Website Insight Stage OPDRACHT 10-15-2025_image3.png" alt="Locaties"><div class="logo-overlay">📍 Koningsdag Locaties</div></div>
-        <div class="tab-body">
+      <div class="slide-card">
+        <div class="slide-img"><img src="bewijzen/OPdracht Website Insight Stage OPDRACHT 10-15-2025_image3.png" alt="Locaties"><div class="slide-logo">📍 Koningsdag</div></div>
+        <div class="slide-body">
           <h3>Foodtruck Locatie & Marktonderzoek</h3>
-          <p class="tab-meta">Locaties, concurrentie & optimalisatie</p>
-          <ul class="tab-list">
-            <li>Locaties geselecteerd op basis van looproutes en doelgroep</li>
-            <li>Concurrentieanalyse van andere foodtrucks tijdens Koningsdag</li>
-            <li>Marktonderzoek naar populaire plekken en bezoekersstromen</li>
-            <li>Optimalisatie van verkooppunten voor maximale zichtbaarheid</li>
+          <p class="slide-meta">Locaties, concurrentie & optimalisatie</p>
+          <ul class="slide-list">
+            <li>Locaties gebaseerd op looproutes & doelgroep</li>
+            <li>Concurrentieanalyse foodtrucks Koningsdag</li>
+            <li>Onderzoek naar bezoekersstromen</li>
+            <li>Optimalisatie verkooppunten</li>
           </ul>
-          <div class="tab-tags"><span>Locatie</span><span>Marktonderzoek</span><span>Koningsdag</span></div>
+          <div class="slide-tags"><span>Locatie</span><span>Marktonderzoek</span><span>Koningsdag</span></div>
         </div>
       </div>
-    </div>
 
-    <div class="tab-panel" data-tab="5">
-      <div class="tab-card">
-        <div class="tab-banner"><img src="bewijzen/Lijstje 9-24-2025 stage_image8.jpeg" alt="Concepten"><div class="logo-overlay">💡 Nieuwe Concepten</div></div>
-        <div class="tab-body">
-          <h3>Mini Smash Burgers & Toekomstige Trends</h3>
-          <p class="tab-meta">Innovatie & marktkansen</p>
-          <ul class="tab-list">
-            <li>Nieuw food concept: Mini Smash Burgers — inspeelt op trend</li>
-            <li>Trendanalyse van huidige food markt en eetgewoontes</li>
-            <li>Doelgroep: jongeren die op zoek zijn naar nieuwe ervaringen</li>
-            <li>Aanbevelingen voor marketing, positionering en lancering</li>
+      <div class="slide-card">
+        <div class="slide-img"><img src="bewijzen/Lijstje 9-24-2025 stage_image8.jpeg" alt="Concepten"><div class="slide-logo">💡 Nieuwe Concepten</div></div>
+        <div class="slide-body">
+          <h3>Mini Smash Burgers & Trends</h3>
+          <p class="slide-meta">Innovatie & marktkansen</p>
+          <ul class="slide-list">
+            <li>Nieuw concept: Mini Smash Burgers</li>
+            <li>Trendanalyse food markt & eetgewoontes</li>
+            <li>Doelgroep: jongeren, nieuwe ervaringen</li>
+            <li>Advies: marketing, positionering & lancering</li>
           </ul>
-          <div class="tab-tags"><span>Concept</span><span>Trends</span><span>Innovatie</span></div>
+          <div class="slide-tags"><span>Concept</span><span>Trends</span><span>Innovatie</span></div>
         </div>
       </div>
+
+    </div>
+    <div class="slides-nav" id="slideNav">
+      <span class="slide-dot active"></span>
+      <span class="slide-dot"></span>
+      <span class="slide-dot"></span>
+      <span class="slide-dot"></span>
+      <span class="slide-dot"></span>
+      <span class="slide-dot"></span>
     </div>
   </div>
 </section>
@@ -763,21 +752,68 @@
 
 <!-- ═══ SCRIPTS ═══ -->
 <script>
-// ── Tabs ──
+// ── Slideshow (infinite loop) ──
 (function(){
-  var btns = document.querySelectorAll('.tab-btn');
-  var panels = document.querySelectorAll('.tab-panel');
-  if(!btns.length) return;
-  for(var i=0; i<btns.length; i++){
-    (function(idx){
-      btns[idx].addEventListener('click', function(){
-        for(var b=0; b<btns.length; b++) btns[b].classList.remove('active');
-        for(var p=0; p<panels.length; p++) panels[p].classList.remove('active');
-        btns[idx].classList.add('active');
-        panels[idx].classList.add('active');
-      });
-    })(i);
+  var track = document.getElementById('slideTrack');
+  var dots = document.querySelectorAll('.slide-dot');
+  if(!track || !dots.length) return;
+  var cards = track.children;
+  var total = cards.length;
+  var current = 0;
+  var timer;
+  
+  function goTo(i){
+    if(i < 0) i = total - 1;
+    if(i >= total) i = 0;
+    current = i;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    for(var d=0; d<dots.length; d++) dots[d].classList.toggle('active', d === current);
   }
+  
+  function next(){ goTo(current + 1); }
+  
+  timer = setInterval(next, 4000);
+  
+  track.addEventListener('mouseenter', function(){ clearInterval(timer); });
+  track.addEventListener('mouseleave', function(){ timer = setInterval(next, 4000); });
+  
+  for(var d=0; d<dots.length; d++){
+    (function(idx){
+      dots[idx].addEventListener('click', function(){
+        clearInterval(timer);
+        goTo(idx);
+        timer = setInterval(next, 4000);
+      });
+    })(d);
+  }
+  
+  // Swipe
+  var sx=0, sy=0, sw=false;
+  track.addEventListener('touchstart', function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; sw=false; });
+  track.addEventListener('touchmove', function(e){
+    var dx=Math.abs(e.touches[0].clientX-sx), dy=Math.abs(e.touches[0].clientY-sy);
+    if(dx>10 && dx>dy){ sw=true; e.preventDefault(); }
+  }, {passive:false});
+  track.addEventListener('touchend', function(e){
+    if(!sw) return;
+    var dx=e.changedTouches[0].clientX-sx;
+    clearInterval(timer);
+    if(dx>50) goTo(current-1); else if(dx<-50) goTo(current+1);
+    timer=setInterval(next,4000);
+    sw=false;
+  });
+  
+  var mx=0, md=false;
+  track.addEventListener('mousedown', function(e){ mx=e.clientX; md=true; });
+  track.addEventListener('mousemove', function(e){ if(md) e.preventDefault(); });
+  track.addEventListener('mouseup', function(e){
+    if(!md) return; var dx=e.clientX-mx;
+    clearInterval(timer);
+    if(dx>50) goTo(current-1); else if(dx<-50) goTo(current+1);
+    timer=setInterval(next,4000);
+    md=false;
+  });
+  track.addEventListener('mouseleave', function(){ md=false; });
 })();
 
 // ── Theme Toggle ──
