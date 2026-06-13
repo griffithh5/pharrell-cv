@@ -347,6 +347,74 @@
   .qr-wrap{text-align:center;margin:40px auto}
   .qr-wrap p{font-size:13px;color:var(--muted);margin-top:10px}
 
+  /* ═══ PRINT ═══ */
+  @media print{
+    body{padding:0;background:white!important;--bg:white;--card:white;--text:#1a1a1a;--muted:#666;--line:#ddd}
+    .hero{min-height:auto;padding:30px 20px 10px!important}
+    .hero::before,.hero::after,.scroll-indicator,.theme-toggle,#particles,.hero-cta-row .secondary,.hero-cta.primary{display:none!important}
+    .hero h1{font-size:32px!important}
+    .hero-sub{font-size:15px!important;min-height:auto}
+    .hero-tags{gap:4px;margin-bottom:8px}
+    .hero-tags span{font-size:9px;padding:2px 8px}
+    .hero-badge{font-size:9px;padding:3px 10px;margin-bottom:10px}
+    .section{padding:12px 16px!important;page-break-inside:avoid}
+    .section-header{margin-bottom:12px}
+    .section-title{font-size:20px!important}
+    .about-grid{grid-template-columns:1fr 1fr!important;gap:16px!important}
+    .about-stats{grid-template-columns:1fr 1fr}
+    .stat-card{padding:10px!important}
+    .stat-card .stat-num{font-size:20px!important}
+    .skills-grid{grid-template-columns:repeat(3,1fr)!important;gap:8px!important}
+    .skill-card{padding:12px!important}
+    .skill-card::before,.skill-icon{display:none}
+    .skill-card h3{font-size:12px;margin-bottom:2px}
+    .skill-card p{font-size:10px}
+    .skill-bar-wrap{margin-top:4px}
+    .skill-bar-label{font-size:9px}
+    .skill-bar-track{height:2px}
+    .skill-bar-fill{width:var(--pct)!important}
+    .project-grid{grid-template-columns:repeat(3,1fr)!important;gap:8px!important}
+    .project-card{padding:12px!important}
+    .project-card::after,.project-icon{display:none}
+    .certs-scroll{overflow:visible!important;flex-wrap:wrap;gap:6px}
+    .cert-card{min-width:auto;flex:1;padding:8px!important}
+    .cert-badge{font-size:16px;margin-bottom:4px}
+    .cert-card h4{font-size:11px}
+    .cert-card p{font-size:9px}
+    .contact-bar{border-radius:8px!important;padding:16px!important;margin-top:8px!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .contact-bar h2{font-size:16px!important;margin-bottom:4px}
+    .contact-bar p{font-size:11px;margin-bottom:12px}
+    .contact-links a{padding:4px 12px!important;font-size:10px!important}
+    .qr-wrap,.footer{display:none}
+    .timeline{padding-left:24px}
+    .tl-item{margin-bottom:8px!important}
+    .tl-date{font-size:9px!important}
+    .tl-title{font-size:12px!important}
+    .tl-desc{font-size:10px!important}
+    .reveal{opacity:1!important;transform:none!important}
+    @page{margin:8mm}
+  }
+
+  /* ═══ SLIDESHOW ═══ */
+  .slideshow-wrap{overflow:hidden;position:relative;border-radius:var(--radius);max-width:900px;margin:0 auto;transition:height 0.4s cubic-bezier(0.32,0.72,0,1)}
+  .slides-track{display:flex;transition:transform 0.5s cubic-bezier(0.32,0.72,0,1);gap:0}
+  .slide-card{min-width:100%;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .slide-img{width:100%;height:200px;overflow:hidden;background:var(--bg)}
+  .slide-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .slide-content{padding:24px 28px}
+  .slide-badge{font-size:48px;margin-bottom:12px;display:none}
+  .slide-card h3{font-size:20px;font-weight:600;margin-bottom:4px}
+  .slide-meta{font-size:13px;color:var(--gold);font-weight:500;margin-bottom:16px}
+  .slide-list{list-style:none;padding:0;margin:0 0 16px}
+  .slide-list li{padding:6px 0 6px 20px;position:relative;font-size:14px;color:var(--muted);line-height:1.6}
+  .slide-list li::before{content:"▸";position:absolute;left:0;color:var(--gold)}
+  .slide-tags{display:flex;gap:6px;flex-wrap:wrap}
+  .slide-tags span{padding:4px 14px;border-radius:100px;background:rgba(201,168,76,0.1);color:var(--gold);font-size:11px;font-weight:500}
+  .slides-nav{display:flex;justify-content:center;gap:8px;margin-top:20px}
+  .slide-dot{width:10px;height:10px;border-radius:50%;background:var(--line);cursor:pointer;transition:all 0.3s;border:none;padding:0}
+  .slide-dot.active{background:var(--gold);width:28px;border-radius:5px}
+  @media print{.slides-nav{display:none}.slide-card{min-width:100%!important;page-break-inside:avoid;padding:16px!important}}
+
   /* ═══ RESPONSIVE ═══ */
   @media(max-width:768px){
     .about-grid{grid-template-columns:1fr;gap:40px}
@@ -391,7 +459,7 @@
         Bekijk mijn CV
         <span class="arrow">↓</span>
       </button>
-      <a class="hero-cta secondary" href="mailto:Tordjop491@gmail.com">
+      <a class="hero-cta secondary" href="mailto:p.tordjo@gmail.com">
         ✉️ Mail mij
       </a>
       <a class="hero-cta secondary" href="https://wa.me/31648476943" target="_blank">
@@ -417,6 +485,7 @@
         Gemotiveerde <strong>E-Commerce Specialist (BOL)</strong> student, 2e jaar,
         op zoek naar een stageplek vanaf <strong>september 2026</strong>
         (beschikbaar op <strong>maandag, dinsdag en woensdag</strong>).
+        Stageperiode: <strong>31 augustus 2026 t/m 22 januari 2027</strong> (P3-K2).
       </p>
       <p style="margin-bottom:16px">
         Specialisatie in <strong>AI-tools</strong> (ChatGPT, prompt engineering),
@@ -515,19 +584,121 @@
   </div>
 </section>
 
-<!-- ═══ CERTIFICATEN ═══ -->
-<section class="section">
+<!-- ═══ BEWIJZEN / PRESENTATIE ═══ -->
+<section class="section" style="padding-top:0">
   <div class="section-header reveal">
-    <div class="section-label">Certificaten</div>
-    <h2 class="section-title">Mijn ontwikkelingen</h2>
+    <div class="section-label">Bewijzen</div>
+    <h2 class="section-title">Mijn analyse & onderzoek</h2>
   </div>
-  <div class="certs-scroll reveal">
-    <div class="cert-card"><div class="cert-badge">🎓</div><h4>E-Commerce Specialist</h4><p>ROC van Amsterdam · MBO 4</p></div>
-    <div class="cert-card"><div class="cert-badge">🤖</div><h4>AI Prompt Engineering</h4><p>ChatGPT · Zelfstudie</p></div>
-    <div class="cert-card"><div class="cert-badge">📊</div><h4>Excel Expert</h4><p>Formules · Draaitabellen · Analyse</p></div>
-    <div class="cert-card"><div class="cert-badge">📱</div><h4>Social Media Marketing</h4><p>Content · Groei · Analytics</p></div>
-    <div class="cert-card"><div class="cert-badge">🛒</div><h4>Shopify Basics</h4><p>Webshop beheer · Producten · Marketing</p></div>
-    <div class="cert-card"><div class="cert-badge">💬</div><h4>Engels B2</h4><p>Professioneel zakelijk Engels</p></div>
+
+  <div class="slideshow-wrap reveal">
+    <div class="slides-track" id="slideTrack">
+      
+      <div class="slide-card">
+        <div class="slide-img"><img src="bewijzen/OPdracht Website Insight Stage OPDRACHT 10-15-2025_image1.png" alt="Website analyse"></div>
+<div class="slide-content">
+        <div class="slide-badge">🍔</div>
+        <h3>Johnny's Burger — Website Analyse</h3>
+        <p class="slide-meta">Doelgroep & UX onderzoek</p>
+        <ul class="slide-list">
+          <li>Website makkelijk te navigeren, meal deals overzichtelijk</li>
+          <li>Coupon code onduidelijk — suggestie: klikbare button die automatisch naar bestelpagine gaat met kortingscode</li>
+          <li>Doelgroep: jongeren (18-30), gebaseerd op Instagram straatinterviews en skits</li>
+          <li>Imago: speels, jong, streetstyle</li>
+        </ul>
+        <div class="slide-tags">
+          <span>UX</span><span>Doelgroep</span><span>Website</span>
+        </div>
+      </div>
+      </div>
+
+      <div class="slide-card">
+        <div class="slide-img"><img src="bewijzen/OPdracht Website Insight Stage OPDRACHT 10-15-2025_image2.png" alt="Taco analyse"></div>
+        <div class="slide-content">
+        <div class="slide-badge">🌮</div>
+        <h3>O'Tacos — Internationale Check</h3>
+        <p class="slide-meta">Website vertaling & branding</p>
+        <ul class="slide-list">
+          <li>Clean en overduidelijke website, maar vertaalfouten NL/FR op .com</li>
+          <li>Franse tekst bij eerste bezoek kan bezoekers afschrikken</li>
+          <li>Doelgroep:zelfde als Johnny's Burger, versterkt door rapper Boef op Instagram</li>
+          <li>Advies: ander font voor prijzen dat kleurenthema matcht (bijv. geel)</li>
+        </ul>
+        <div class="slide-tags">
+          <span>Branding</span><span>UX</span><span>Vertaling</span>
+        </div>
+      </div>
+
+      <div class="slide-card">
+        <div class="slide-badge">🧀</div>
+        <h3>Chick & Cheeze — Trend Analyse</h3>
+        <p class="slide-meta">Social media & menu strategie</p>
+        <ul class="slide-list">
+          <li>Menu gebaseerd op trending food items en meal combinaties</li>
+          <li>Doelgroep: mensen die online bestellen, beïnvloed door social media trends</li>
+          <li>Chick & Cheeze gebruikt virale momenten om aandacht te trekken</li>
+          <li>Strategie: inspelen op chocolade/trendy items voor impulsbestellingen</li>
+        </ul>
+        <div class="slide-tags">
+          <span>Trends</span><span>Social Media</span><span>Strategie</span>
+        </div>
+      </div>
+
+      <div class="slide-card">
+        <div class="slide-badge">📱</div>
+        <h3>Influencer Marketing</h3>
+        <p class="slide-meta">TikTok samenwerkingen (100-200K volgers)</p>
+        <ul class="slide-list">
+          <li>30+ influencers geselecteerd voor nieuwe gezichten</li>
+          <li>Mix van humor, food, en lifestyle content creators</li>
+          <li>Doelgroep: jongeren via TikTok en Instagram</li>
+          <li>Voorbeelden: Samya Hafsaoui, Drive & Bites, Don Kaaklijn</li>
+        </ul>
+        <div class="slide-tags">
+          <span>Influencer</span><span>TikTok</span><span>Marketing</span>
+        </div>
+      </div>
+
+      <div class="slide-card">
+        <div class="slide-badge">📍</div>
+        <h3>Koningsdag Locatie Analyse</h3>
+        <p class="slide-meta">Foodtruck locaties & marktonderzoek</p>
+        <ul class="slide-list">
+          <li>Locaties geselecteerd op basis van looproutes en doelgroep</li>
+          <li>Concurrentieanalyse van andere foodtrucks</li>
+          <li>Marktonderzoek naar populaire plekken tijdens Koningsdag</li>
+          <li>Optimalisatie van verkooppunten op basis van bezoekersstromen</li>
+        </ul>
+        <div class="slide-tags">
+          <span>Locatie</span><span>Marktonderzoek</span><span>Koningsdag</span>
+        </div>
+      </div>
+
+      <div class="slide-card">
+        <div class="slide-badge">💡</div>
+        <h3>Nieuwe Concepten</h3>
+        <p class="slide-meta">Mini Smash Burgers & trends</p>
+        <ul class="slide-list">
+          <li>Nieuw food concept: Mini Smash Burgers</li>
+          <li>Trendanalyse van huidige food markt</li>
+          <li>Doelgroep: jongeren die op zoek zijn naar nieuwe eetervaringen</li>
+          <li>Aanbevelingen voor marketing en positionering</li>
+        </ul>
+        <div class="slide-tags">
+          <span>Concept</span><span>Trends</span><span>Innovatie</span>
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="slides-nav">
+      <span class="slide-dot active" onclick="goSlide(0)"></span>
+      <span class="slide-dot" onclick="goSlide(1)"></span>
+      <span class="slide-dot" onclick="goSlide(2)"></span>
+      <span class="slide-dot" onclick="goSlide(3)"></span>
+      <span class="slide-dot" onclick="goSlide(4)"></span>
+      <span class="slide-dot" onclick="goSlide(5)"></span>
+    </div>
   </div>
 </section>
 
@@ -539,16 +710,22 @@
   </div>
   <div class="timeline">
     <div class="tl-item reveal">
+      <div class="tl-date">Apr 2026</div>
+      <div class="tl-title">Marketing & Locatie Onderzoek</div>
+      <div class="tl-org">Johnny's Burger / Tacos & Chick & Chees · Foodtruck</div>
+      <div class="tl-desc">Doelgroep onderzoek, marktanalyse en locatie selectie voor Koningsdag. AI-tools ingezet voor content creatie en social media.</div>
+    </div>
+    <div class="tl-item reveal">
       <div class="tl-date">2023 — Heden</div>
       <div class="tl-title">E-Commerce Specialist (BOL)</div>
       <div class="tl-org">ROC van Amsterdam · MBO 4, 3e jaar</div>
       <div class="tl-desc">Specialisatie in online marketing, webshop beheer, SEO/SEA, social media en data-analyse.</div>
     </div>
     <div class="tl-item reveal">
-      <div class="tl-date">Sep 2026</div>
-      <div class="tl-title">Stage E-Commerce</div>
-      <div class="tl-org">Beschikbaar · Maandag t/m woensdag</div>
-      <div class="tl-desc">Op zoek naar een innovatief bedrijf waar ik mijn AI-, Office- en social media skills kan inzetten.</div>
+      <div class="tl-date">Sep 2026 — Jan 2027</div>
+      <div class="tl-title">Stage E-Commerce (P3-K2)</div>
+      <div class="tl-org">Maandag t/m woensdag · 31 aug t/m 22 jan</div>
+      <div class="tl-desc">Verplichte stage voor E-Commerce Specialist (BOL). Op zoek naar een innovatief bedrijf waar ik mijn AI-, Office- en social media skills kan inzetten en verder ontwikkelen.</div>
     </div>
   </div>
 </section>
@@ -557,7 +734,7 @@
 <div class="section" style="padding-top:0">
   <div class="qr-wrap reveal">
     <div style="display:inline-block;background:var(--card);padding:20px;border-radius:16px;border:1px solid var(--line)">
-      <div id="qrcode" style="width:150px;height:150px;margin:0 auto;background:var(--card);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:60px;color:var(--text)">📱</div>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://griffithh5.github.io/pharrell-cv" alt="QR" style="border-radius:8px;display:block;width:150px;height:150px">
       <p style="margin-top:8px">Scan voor portfolio</p>
     </div>
   </div>
@@ -569,7 +746,7 @@
     <h2>Zullen we kennismaken?</h2>
     <p>Ik ben op zoek naar een stageplek waar ik kan groeien en bijdragen</p>
     <div class="contact-links">
-      <a href="mailto:Tordjop491@gmail.com"><span>✉️</span> Tordjop491@gmail.com</a>
+      <a href="mailto:p.tordjo@gmail.com"><span>✉️</span> p.tordjo@gmail.com</a>
       <a href="https://wa.me/31648476943" target="_blank"><span>💬</span> WhatsApp</a>
       <a href="#" onclick="window.print();return false"><span>📄</span> Download PDF</a>
     </div>
@@ -582,6 +759,92 @@
 
 <!-- ═══ SCRIPTS ═══ -->
 <script>
+// ── Slide Show ──
+(function(){
+  var track = document.getElementById('slideTrack');
+  if(!track) return;
+  var dots = document.querySelectorAll('.slide-dot');
+  var cards = track.querySelectorAll('.slide-card');
+  var current = 0;
+  var total = dots.length;
+  var interval;
+  
+  function updateHeight(){
+    var h = cards[current].offsetHeight;
+    track.parentElement.style.height = h + 'px';
+  }
+  
+  window.goSlide = function(i){
+    if(i < 0) i = total - 1;
+    if(i >= total) i = 0;
+    current = i;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    for(var d=0; d<dots.length; d++){
+      dots[d].classList.toggle('active', d === current);
+    }
+    setTimeout(updateHeight, 50);
+  };
+  
+  function autoSlide(){
+    goSlide((current + 1) % total);
+  }
+  
+  interval = setInterval(autoSlide, 4000);
+  
+  track.addEventListener('mouseenter', function(){ clearInterval(interval); });
+  track.addEventListener('mouseleave', function(){ interval = setInterval(autoSlide, 4000); });
+  
+  for(var d=0; d<dots.length; d++){
+    (function(idx){
+      dots[idx].addEventListener('click', function(){
+        clearInterval(interval);
+        goSlide(idx);
+        interval = setInterval(autoSlide, 4000);
+      });
+    })(d);
+  }
+  
+  // ── Swipe (touch) ──
+  var startX = 0, startY = 0, isSwiping = false;
+  track.addEventListener('touchstart', function(e){
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isSwiping = false;
+  });
+  track.addEventListener('touchmove', function(e){
+    var dx = e.touches[0].clientX - startX;
+    var dy = e.touches[0].clientY - startY;
+    if(Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
+      isSwiping = true;
+      e.preventDefault();
+    }
+  }, {passive:false});
+  track.addEventListener('touchend', function(e){
+    if(!isSwiping) return;
+    var dx = e.changedTouches[0].clientX - startX;
+    if(dx > 50) goSlide(current - 1);
+    else if(dx < -50) goSlide(current + 1);
+    isSwiping = false;
+  });
+  
+  // ── Swipe (mouse drag) ──
+  var mx = 0, mdown = false;
+  track.addEventListener('mousedown', function(e){ mx = e.clientX; mdown = true; });
+  track.addEventListener('mousemove', function(e){ if(mdown) e.preventDefault(); });
+  track.addEventListener('mouseup', function(e){
+    if(!mdown) return;
+    var dx = e.clientX - mx;
+    if(dx > 50) goSlide(current - 1);
+    else if(dx < -50) goSlide(current + 1);
+    mdown = false;
+  });
+  track.addEventListener('mouseleave', function(){ mdown = false; });
+  
+  // Init height
+  setTimeout(updateHeight, 100);
+  window.addEventListener('resize', updateHeight);
+})();
+
 // ── Theme Toggle ──
 function toggleTheme(){
   var html = document.documentElement;
