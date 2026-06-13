@@ -399,8 +399,10 @@
   .slideshow-wrap{overflow:hidden;position:relative;border-radius:var(--radius);max-width:900px;margin:0 auto}
   .slides-track{display:flex;transition:transform 0.5s cubic-bezier(0.32,0.72,0,1);gap:0}
   .slide-card{min-width:100%;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-  .slide-img{width:100%;height:200px;overflow:hidden;background:var(--bg);position:relative}
-  .slide-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .slide-img{width:100%;height:320px;overflow:hidden;background:var(--bg);position:relative;cursor:zoom-in}
+  .slide-img img{width:100%;height:100%;object-fit:contain;display:block;background:#f0ede8}
+  .slide-img .zoom-hint{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);padding:4px 12px;border-radius:100px;color:#fff;font-size:10px;opacity:0;transition:opacity 0.3s}
+  .slide-img:hover .zoom-hint{opacity:1}
   .slide-logo{position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);padding:6px 16px;border-radius:100px;color:#fff;font-size:13px;font-weight:600;letter-spacing:0.03em}
   .slide-body{padding:24px 28px}
   .slide-body h3{font-size:19px;font-weight:600;margin-bottom:4px}
@@ -594,7 +596,7 @@
     <div class="slides-track" id="slideTrack">
 
       <div class="slide-card">
-        <div class="slide-img"><img src="bewijzen/OPdracht Website Insight Stage OPDRACHT 10-15-2025_image1.png" alt="Johnny's Burger"><div class="slide-logo">🍔 Johnny's Burger</div></div>
+        <div class="slide-img"><img src="bewijzen/OPdracht Website Insight Stage OPDRACHT 10-15-2025_image1.png" alt="Johnny's Burger"><div class="zoom-hint">🔍 Klik om te vergroten</div><div class="slide-logo">🍔 Johnny's Burger</div></div>
         <div class="slide-body">
           <h3>Website Analyse & Doelgroep</h3>
           <p class="slide-meta">UX, doelgroep & marketing</p>
@@ -609,7 +611,7 @@
       </div>
 
       <div class="slide-card">
-        <div class="slide-img"><img src="bewijzen/OPdracht Website Insight Stage OPDRACHT 10-15-2025_image2.png" alt="O'Tacos"><div class="slide-logo">🌮 O'Tacos</div></div>
+        <div class="slide-img"><img src="bewijzen/OPdracht Website Insight Stage OPDRACHT 10-15-2025_image2.png" alt="O'Tacos"><div class="zoom-hint">🔍 Klik om te vergroten</div><div class="slide-logo">🌮 O'Tacos</div></div>
         <div class="slide-body">
           <h3>Branding & Internationale Check</h3>
           <p class="slide-meta">Website, vertaling & doelgroep</p>
@@ -814,6 +816,18 @@
     md=false;
   });
   track.addEventListener('mouseleave', function(){ md=false; });
+  
+  // ── Click to zoom image ──
+  track.addEventListener('click', function(e){
+    var img = e.target.closest('.slide-img');
+    if(!img) return;
+    var src = img.querySelector('img').src;
+    var ov = document.createElement('div');
+    ov.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:zoom-out;animation:fadeIn 0.3s';
+    ov.innerHTML = '<img src="'+src+'" style="max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 40px 80px rgba(0,0,0,0.5)">';
+    ov.onclick = function(){ document.body.removeChild(ov); };
+    document.body.appendChild(ov);
+  });
 })();
 
 // ── Theme Toggle ──
